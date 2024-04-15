@@ -51,9 +51,10 @@ export const authOptions: AuthOptions = {
         password: {},
       },
       async authorize(credentials, req) {
-        const res = await myAxios.post(LOGIN_URL, credentials);     
-        const response = res.data;
-        const user = response?.user;
+        // const res = await myAxios.post(LOGIN_URL, credentials);     
+        // const response = res.data;
+        // const user = response?.user;
+        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
         if (user) {
           return user;
         } else {

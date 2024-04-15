@@ -19,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       <body className={inter.className}>
         <ToastContainer />
         <AuthProvider>{children}</AuthProvider>
