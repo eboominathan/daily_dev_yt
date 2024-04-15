@@ -3,7 +3,7 @@ import React from "react";
 
 export default function UserAvatar({ image }: { image?: string }) {
   return (
-    <div>
+    <div >
       {image ? (
         <Image src={image} width={40} height={40} alt="avatar" />
       ) : (
