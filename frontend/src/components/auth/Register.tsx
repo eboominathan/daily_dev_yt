@@ -106,6 +106,7 @@ export default function Register() {
               <div className="space-y-1">
                 <Label htmlFor="password">Password</Label>
                 <Input
+                type="password"
                   id="password"
                   placeholder="Enter here.."
                   value={authState.password}
@@ -118,6 +119,7 @@ export default function Register() {
               <div className="space-y-1">
                 <Label htmlFor="cpassword">Confirm Password</Label>
                 <Input
+                type="password"
                   id="cpassword"
                   placeholder="Enter here.."
                   value={authState.password_confirmation}

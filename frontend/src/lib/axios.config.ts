@@ -1,10 +1,11 @@
-import axios from "axios"
+import axios from "axios";
+import { API_URL } from "./apiEndPoints";
 
-const myAxios  = axios.create({
-    baseURL : "http://localhost/8000",
-    headers:{
-        Accept : "application/json"
-    },
+const myAxios = axios.create({
+  baseURL: API_URL,
+  headers: {
+    Accept: "application/json",
+  },
 });
 
 export default myAxios;

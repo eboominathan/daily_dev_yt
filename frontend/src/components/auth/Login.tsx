@@ -18,8 +18,8 @@ import myAxios from "@/lib/axios.config";
 
 export default function Login() {
   const [authState, setAuthState] = useState({
-    email: "",
-    password: "",
+    email: "eboominathan@gmail.com",
+    password: "123456",
   });
   const [errors, setErrors] = useState({
     email: [],
@@ -36,12 +36,15 @@ export default function Login() {
         const response = res.data;
         setLoading(false);
         if (response?.status == 200) {
+
           signIn("credentials", {
             email: authState.email,
             password: authState.password,
             redirect: true,
             callbackUrl: "/",
           });
+          toast.success("Loggedin Successfully!");
+
         } else if (response?.status == 401) {
           toast.error(response?.message);
         }

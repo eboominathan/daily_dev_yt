@@ -20,22 +20,29 @@ export type CustomUser = {
 };
 
 export const authOptions: AuthOptions = {
-    pages:{
-        signIn:"/login",
-
+  pages: {
+    signIn: "/login",
+  },
+  callbacks: {
+    async jwt({ token, user, trigger, session }) {
+      if (user) {
+        token.user = user;
+      }
+      return token;
     },
-    callbacks:{
-            async jwt({token, user, trigger, session}){
-                if(user){
-                    token.user = user;
-                }
-                return token;
-            },
-            async session({session, token, user}:{session:CustomSession,token:JWT,user:CustomUser}){
-                session.user = token.user as CustomUser;
-                return session;               
-            }
+    async session({
+      session,
+      token,
+      user,
+    }: {
+      session: CustomSession;
+      token: JWT;
+      user: CustomUser;
+    }) {
+      session.user = token.user as CustomUser;
+      return session;
     },
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -44,9 +51,9 @@ export const authOptions: AuthOptions = {
         password: {},
       },
       async authorize(credentials, req) {
-        const res = await myAxios.post(LOGIN_URL, credentials);
+        const res = await myAxios.post(LOGIN_URL, credentials);     
         const response = res.data;
-        const user = response.user;
+        const user = response?.user;
         if (user) {
           return user;
         } else {
